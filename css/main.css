@@ -1,0 +1,159 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden; }
+
+.button-white {
+  background-color: white;
+  border-color: white;
+  color: #2d2d2d; }
+
+.button-dark {
+  background-color: #2d2d2d;
+  border-color: #2d2d2d; }
+
+.button-dark:hover {
+  background-color: #474747; }
+
+.button-white.button-clear,
+.button-white.button-outline {
+  background-color: transparent;
+  color: white; }
+
+.button-white.button-clear {
+  border-color: transparent; }
+
+.loading {
+  background-color: #fff;
+  color: #2d2d2d;
+  text-align: center; }
+  .loading img {
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 160px;
+    text-align: center;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+  .loading i {
+    margin-top: 70px;
+    font-size: 36pt;
+    text-align: center; }
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+  .loading .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    animation: spinner .6s linear infinite; }
+
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%; }
+  .header .close {
+    float: right;
+    background-color: #2d2d2d;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    line-height: 42px;
+    font-size: 120%;
+    font-weight: 400;
+    cursor: pointer; }
+  .header .close:hover {
+    background-color: #474747; }
+
+.welcome {
+  display: none;
+  width: 100%;
+  margin-top: 0px;
+  padding: 0px 30px 20px 30px;
+  background-color: #fff;
+  color: #2d2d2d;
+  text-align: center; }
+  .welcome img {
+    clear: both;
+    height: 150px;
+    margin: 100px auto;
+    text-align: center;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+  .welcome h3 {
+    margin-bottom: 50px;
+    font-weight: 600; }
+  .welcome p {
+    margin-bottom: 50px;
+    font-weight: 400; }
+  .welcome p#build {
+    margin-bottom: 25px;
+    font-weight: 400; }
+  .welcome .footer {
+    width: 100%;
+    margin-top: 25px;
+    font-weight: 300;
+    font-size: 75%; }
+
+.connection {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  color: #2d2d2d;
+  text-align: center; }
+  .connection .header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%; }
+    .connection .header .logo {
+      float: left;
+      height: 40px; }
+    .connection .header .close {
+      float: right;
+      background-color: #2d2d2d;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      line-height: 42px;
+      font-size: 120%;
+      font-weight: 400;
+      cursor: pointer; }
+    .connection .header .close:hover {
+      background-color: #474747; }
+  .connection p {
+    font-weight: 300; }
+  .connection label {
+    font-weight: 300; }
+  .connection input, .connection input:focus {
+    border-color: #2d2d2d;
+    color: #606060; }
+  .connection code.dark {
+    background-color: #2d2d2d;
+    color: #fff; }
+  .connection button {
+    margin-top: 20px; }
+
+/*# sourceMappingURL=main.css.map */

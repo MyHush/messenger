@@ -1,0 +1,43 @@
+{
+  "name": "hush-messenger",
+  "version": "1.0.0",
+  "description": "Secure messaging with the zcash protocol",
+  "main": "main.js",
+  "repository": "https://github.com/MyHush/messenger",
+  "keywords": [
+    "cryptocurrency",
+    "zcash",
+    "hush",
+    "messaging",
+    "privacy"
+  ],
+  "author": {
+    "name": "Matthew Reichardt",
+    "email": "matt@myhush.org",
+    "url": "https://myhush.org"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2",
+    "electron-builder": "^17.10.0"
+  },
+  "dependencies": {
+    "bitcoin": "^3.0.1",
+    "delay": "^2.0.0",
+    "material-icons": "^0.1.0",
+    "npm": "^4.6.1",
+    "request": "^2.81.0"
+  },
+  "build": {
+    "appId": "com.github.myhush.messenger",
+    "mac": {
+      "category": "messaging"
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build",
+    "postinstall": "install-app-deps"
+  }
+}
