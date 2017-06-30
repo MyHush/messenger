@@ -127,7 +127,8 @@ body {
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%; }
+    width: 100%;
+    -webkit-app-region: drag; }
     .connection .header .logo {
       float: left;
       height: 40px; }
@@ -140,7 +141,8 @@ body {
       line-height: 42px;
       font-size: 120%;
       font-weight: 400;
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-app-region: no-drag; }
     .connection .header .close:hover {
       background-color: #474747; }
   .connection p {
@@ -155,5 +157,58 @@ body {
     color: #fff; }
   .connection button {
     margin-top: 20px; }
+
+.messenger {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  color: #2d2d2d;
+  text-align: center; }
+  .messenger .header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    -webkit-app-region: drag; }
+    .messenger .header .logo {
+      float: left;
+      height: 40px;
+      margin: 10px; }
+    .messenger .header .branding {
+      float: left;
+      line-height: 57px;
+      font-weight: 400; }
+    .messenger .header .close {
+      float: right;
+      background-color: #2d2d2d;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      line-height: 42px;
+      font-size: 120%;
+      font-weight: 400;
+      cursor: pointer;
+      -webkit-app-region: no-drag; }
+    .messenger .header .close:hover {
+      background-color: #474747; }
+  .messenger .zaddress {
+    float: right;
+    margin-top: 50px;
+    text-align: right; }
+    .messenger .zaddress h5 {
+      font-weight: 500;
+      margin: 0px; }
+    .messenger .zaddress p {
+      width: 95%;
+      font-weight: 300;
+      font-size: 7pt;
+      word-wrap: break-word;
+      line-height: 13px; }
+  .messenger .balance {
+    float: right;
+    font-weight: 400;
+    padding: 5px 0px 10px 30px; }
+    .messenger .balance i {
+      padding: 5px 5px 10px 00px; }
 
 /*# sourceMappingURL=main.css.map */

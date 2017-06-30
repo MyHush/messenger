@@ -1,1 +1,91 @@
-dd
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hush Messenger</title>
+    <link rel="stylesheet" href="../css/milligram.min.css">
+    <link rel="stylesheet" href="../css/animate.css" />
+    <!-- Material icons font hosted by Google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700">
+    <!-- Material icons CSS toolkit -->
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="messenger">
+        <div class="header">
+          <img class="logo" src="../images/logo_hush_1024.png" /><span class="branding">Messenger</span>
+          <div class="close" v-on:click="quit"><span>X</span></div>
+        </div>
+        <div class="row">
+          <div class="zaddress">
+            <div class="balance">{{ zBalance }} HUSH
+              <br />
+              <i class="fa fa-refresh" aria-hidden="true"></i>
+            </div>
+            <div class="float: right">
+              <h5>Funding address</h5>
+              <p>{{ zAddress }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>window.$ = window.jQuery = require('./jquery.min.js');</script>
+  <script src='https://unpkg.com/vue'></script>
+  <script>
+    // You can also require other files to run in this process
+    require('../renderer.js')
+    var bitcoin = require('bitcoin')
+
+    const {ipcRenderer} = require('electron')
+    const remote = require('electron').remote
+
+    var client = new bitcoin.Client({
+      host: 'localhost',
+      port: 8822,
+      user: localStorage.getItem('rpcUser'),
+      pass: localStorage.getItem('rpcPass'),
+      timeout: 30000
+    });
+
+    if(localStorage.getItem('zAddress') == null) {
+      client.cmd('z_getnewaddress', function(err, address, resHeaders){
+        if (err) {
+          alert(err)
+        } else {
+          localStorage.setItem('zAddress', address)
+          location.reload()
+        }
+      });
+    }
+
+    var balanceCheck = 0;
+    client.cmd('z_getbalance', localStorage.getItem('zAddress'), function(err, address, resHeaders){
+      if (err) {
+        alert(err)
+      } else {
+        localStorage.setItem('zBalance', address)
+        if(balanceCheck = 0) {
+          location.reload()
+        }
+        balanceCheck++
+      }
+    });
+
+    new Vue({
+      el: '.app',
+      data: {
+        zAddress: localStorage.getItem('zAddress'),
+        zBalance: localStorage.getItem('zBalance')
+      },
+      methods: {
+        quit: function () {
+          remote.getCurrentWindow().close()
+        }
+      }
+    });
+  </script>
+</html>

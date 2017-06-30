@@ -63,7 +63,7 @@ ipcMain.on('open-messenger-window-startup', function () {
     let screen = electron.screen.getPrimaryDisplay()
     let dimensions = screen.workAreaSize
 
-    messengerWindow = new BrowserWindow({width: 340, height: 115, frame: false, backgroundColor: '#fff', x: dimensions.width-375, y: -dimensions.height+60+dimensions.height})
+    messengerWindow = new BrowserWindow({width: 350, height: 800, frame: false, backgroundColor: '#fff', x: dimensions.width-375, y: -dimensions.height+60+dimensions.height})
 
     messengerWindow.loadURL(url.format({
       pathname: path.join(__dirname, 'views/messenger.html'),
@@ -89,7 +89,7 @@ ipcMain.on('open-messenger-window', function () {
     let screen = electron.screen.getPrimaryDisplay()
     let dimensions = screen.workAreaSize
 
-    messengerWindow = new BrowserWindow({width: 340, height: 115, frame: false, backgroundColor: '#fff', x: dimensions.width-375, y: -dimensions.height+60+dimensions.height})
+    messengerWindow = new BrowserWindow({width: 340, height: 800, frame: false, backgroundColor: '#fff', x: dimensions.width-375, y: -dimensions.height+60+dimensions.height})
 
     messengerWindow.loadURL(url.format({
       pathname: path.join(__dirname, 'views/messenger.html'),
