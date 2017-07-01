@@ -249,17 +249,17 @@ body {
   }
 
   .zaddress {
-    float: right;
+    float: left;
+    text-align: left;
+    width: 60%;
     margin-top: 50px;
-    text-align: right;
 
     h5 {
       font-weight: 500;
       margin: 0px;
     }
 
-    p {
-      width: 95%;
+    .address {
       font-weight: 300;
       font-size: 7pt;
       word-wrap: break-word;
@@ -268,12 +268,15 @@ body {
   }
 
   .balance {
-    float: right;
+    float: left;
     font-weight: 400;
-    padding: 5px 0px 10px 30px;
+    width: 40%;
+    margin-top: 50px;
+    text-align: right;
 
-    i {
-      padding: 5px 5px 10px 00px;
+    h5 {
+      font-weight: 500;
+      margin: 0px;
     }
   }
 }

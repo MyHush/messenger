@@ -192,23 +192,26 @@ body {
     .messenger .header .close:hover {
       background-color: #474747; }
   .messenger .zaddress {
-    float: right;
-    margin-top: 50px;
-    text-align: right; }
+    float: left;
+    text-align: left;
+    width: 60%;
+    margin-top: 50px; }
     .messenger .zaddress h5 {
       font-weight: 500;
       margin: 0px; }
-    .messenger .zaddress p {
-      width: 95%;
+    .messenger .zaddress .address {
       font-weight: 300;
       font-size: 7pt;
       word-wrap: break-word;
       line-height: 13px; }
   .messenger .balance {
-    float: right;
+    float: left;
     font-weight: 400;
-    padding: 5px 0px 10px 30px; }
-    .messenger .balance i {
-      padding: 5px 5px 10px 00px; }
+    width: 40%;
+    margin-top: 50px;
+    text-align: right; }
+    .messenger .balance h5 {
+      font-weight: 500;
+      margin: 0px; }
 
 /*# sourceMappingURL=main.css.map */

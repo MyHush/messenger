@@ -20,14 +20,14 @@
         </div>
         <div class="row">
           <div class="zaddress animated fadeIn">
-            <div class="balance animated fadeInRight">{{ zBalance }} HUSH
-              <br />
-              <i class="fa fa-refresh" aria-hidden="true"></i>
-            </div>
             <div class="animated fadeInLeft">
               <h5>Funding address</h5>
-              <p>{{ zAddress }}</p>
+              <p class="address">{{ zAddress }}</p>
             </div>
+          </div>
+          <div class="balance animated fadeInRight">
+            <h5>Balance</h5>
+            <p id="balance">{{ zBalance }} HUSH</p>
           </div>
         </div>
       </div>
@@ -39,6 +39,7 @@
     // You can also require other files to run in this process
     require('../renderer.js')
     var bitcoin = require('bitcoin')
+    var Scheduler = require('nschedule');
 
     const {ipcRenderer} = require('electron')
     const remote = require('electron').remote
@@ -62,18 +63,8 @@
       });
     }
 
-    var balanceCheck = 0;
-    client.cmd('z_getbalance', localStorage.getItem('zAddress'), function(err, address, resHeaders){
-      if (err) {
-        alert(err)
-      } else {
-        localStorage.setItem('zBalance', address)
-        if(balanceCheck = 0) {
-          location.reload()
-        }
-        balanceCheck++
-      }
-    });
+    // Schedule recurring tasks!
+    var scheduler = new Scheduler(1);
 
     new Vue({
       el: '.app',
@@ -81,9 +72,25 @@
         zAddress: localStorage.getItem('zAddress'),
         zBalance: localStorage.getItem('zBalance')
       },
+      mounted:function(){
+        this.startPolling()
+      },
       methods: {
         quit: function () {
           remote.getCurrentWindow().close()
+        },
+        startPolling: function () {
+          var self = this
+          scheduler.add(3000, function(done){
+            client.cmd('z_getbalance', localStorage.getItem('zAddress'), function(err, address, resHeaders){
+              if (err) {
+                alert(err)
+              } else {
+                localStorage.setItem('zBalance', address)
+                self.zBalance = localStorage.getItem('zBalance')
+              }
+            })
+          });
         }
       }
     });
