@@ -2,6 +2,8 @@
 
 Secure messaging with the zcash protocol
 
+**This repo is in active development.**
+
 ## Platforms
 
 Currently Supported
@@ -16,4 +18,4 @@ Planned Support
 
 ## Compiled Binaries
 
-Compiled binaries are available on the [Latest Release](https://github.com/matthewjamesr/Crypti/releases/latest) page.
+Compiled binaries are available on the [Latest Release](https://github.com/MyHush/messenger/releases/latest) page.

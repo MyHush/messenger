@@ -71,7 +71,7 @@ ipcMain.on('open-messenger-window-startup', function () {
       slashes: true
     }))
 
-    messengerWindow.webContents.openDevTools()
+    //messengerWindow.webContents.openDevTools()
 
     messengerWindow.on('closed', function () {
         connectionWindow = null;
@@ -97,7 +97,7 @@ ipcMain.on('open-messenger-window', function () {
       slashes: true
     }))
 
-    messengerWindow.webContents.openDevTools()
+    //messengerWindow.webContents.openDevTools()
 
     messengerWindow.on('closed', function () {
         connectionWindow = null;
