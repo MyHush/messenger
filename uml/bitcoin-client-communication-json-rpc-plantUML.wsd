@@ -11,6 +11,8 @@ note left
   Content-Type: application/json
 
   {"params":[],"version":"1.1","method":"getwalletinfo"}
+
+  [[https://chainquery.com/bitcoin-api/getwalletinfo]]
 end note
 
 Alice <-- Server: Response
