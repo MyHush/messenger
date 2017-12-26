@@ -5,33 +5,37 @@ skinparam component {
   BackgroundColor #FEFECE
 }
 
+cloud {
+  folder "Dependecies" {
+    ["bitcoin": "^3.0.1"]         as bitcoin
+    ["delay": "^2.0.0"]           as delay
+    ["material-icons": "^0.1.0"]  as material_icons
+    ["npm": "^4.6.1"]             as npm
+    ["nschedule": "^0.4.0"]       as nschedule
+  }
 
-folder "Dependecies" {
-  ["bitcoin": "^3.0.1"]         as bitcoin
-  ["delay": "^2.0.0"]           as delay
-  ["material-icons": "^0.1.0"]  as material_icons
-  ["npm": "^4.6.1"]             as npm
-  ["nschedule": "^0.4.0"]       as nschedule
+  folder "Dev Dependencies" {
+    ["electron": "~1.6.2"]            as electron
+    ["electron-builder": "^17.10.0"]  as electron_builder
+  }
 }
 
-folder "Dev Dependencies" {
-  ["electron": "~1.6.2"]            as electron
-  ["electron-builder": "^17.10.0"]  as electron_builder
-}
-folder "package.json" {
-  ["package.json"] as packagejson
-}
-folder "main.js" {
-  ["main.js"] as mainjs
-}
-folder "welcome.html" {
-  ["welcome.html"] as welcomehtml
-}
-folder "messenger.html" {
-  ["messenger.html"] as messengerhtml
-}
-folder "connection.html" {
-  ["connection.html"] as connectionhtml
+cloud {
+  folder "package.json" {
+    ["package.json"] as packagejson
+  }
+  folder "main.js" {
+    ["main.js"] as mainjs
+  }
+  folder "welcome.html" {
+    ["welcome.html"] as welcomehtml
+  }
+  folder "messenger.html" {
+    ["messenger.html"] as messengerhtml
+  }
+  folder "connection.html" {
+    ["connection.html"] as connectionhtml
+  }
 }
 
 folder "Web Dependecies" {
@@ -39,12 +43,14 @@ folder "Web Dependecies" {
   ["vue"] as vue
 }
 
+[packagejson]       --> [mainjs]
+
+[mainjs]            --> [welcomehtml]
+[mainjs]            --> [connectionhtml]
+[mainjs]            --> [messengerhtml]
 
 [mainjs]            --> [electron]
 [messengerhtml]     --> [electron]
-
-
-[packagejson]       --> [mainjs]
 
 [welcomehtml]       --> [vue]
 [welcomehtml]       --> [jquery]
