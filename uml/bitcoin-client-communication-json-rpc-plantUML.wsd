@@ -1,8 +1,8 @@
 @startuml
 
-Alice <-> Server: Hush' RPC runs on port 8822 on localhost with user and pass, timeout 30000
+Client <-> Server: Hush' RPC runs on port 8822 on localhost with user and pass, timeout 30000
 
-Alice -> Server: getwalletinfo
+Client -> Server: getwalletinfo
 note left
   Server: POST http://user:pass@127.0.0.1:8822
   Accept: application/json
@@ -15,7 +15,7 @@ note left
   [[https://chainquery.com/bitcoin-api/getwalletinfo]]
 end note
 
-Alice <-- Server: Response
+Client <-- Server: Response
 note right
   {
   "walletversion": 60000,

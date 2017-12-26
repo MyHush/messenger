@@ -38,9 +38,11 @@ cloud {
   }
 }
 
-folder "Web Dependecies" {
-  ["jquery-3.2.1.min.js"] as jquery
-  ["vue"] as vue
+cloud {
+  folder "Web Dependecies" {
+    ["jquery-3.2.1.min.js"] as jquery
+    ["vue"] as vue
+  }
 }
 
 [packagejson]       --> [mainjs]
