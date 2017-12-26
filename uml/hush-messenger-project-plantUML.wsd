@@ -74,9 +74,3 @@ note left of (npm)
 end note
 
 @enduml
-
-cloud "Bitcoin RPC\nRemote Procedure Call (JSON)" {
-  [Service Locator] as ServiceLocator
-}
-
-["request": "^2.81.0"]        as request
