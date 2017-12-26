@@ -18,4 +18,4 @@ Planned Support
 
 ## Compiled Binaries
 
-Compiled binaries are available on the [Latest Release](https://github.com/MyHush/messenger/releases/latest) page.
+Compiled binaries are available **soon** on the [Latest Release](https://github.com/MyHush/messenger/releases/latest) page.
