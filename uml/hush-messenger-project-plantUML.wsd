@@ -1,0 +1,111 @@
+@startuml
+
+skinparam component {
+  Style uml2
+  BackgroundColor #FEFECE
+}
+
+cloud {
+  folder "Dependecies" {
+    ["bitcoin": "^3.0.1"]         as bitcoin
+    ["delay": "^2.0.0"]           as delay
+    ["material-icons": "^0.1.0"]  as material_icons
+    ["npm": "^4.6.1"]             as npm
+    ["nschedule": "^0.4.0"]       as nschedule
+  }
+
+  folder "Dev Dependencies" {
+    ["electron": "~1.6.2"]            as electron
+    ["electron-builder": "^17.10.0"]  as electron_builder
+  }
+}
+
+cloud {
+  folder "package.json" {
+    ["package.json"] as packagejson
+  }
+  folder "main.js" {
+    ["main.js"] as mainjs
+  }
+  folder "welcome.html" {
+    ["welcome.html"] as welcomehtml
+  }
+  folder "messenger.html" {
+    ["messenger.html"] as messengerhtml
+  }
+  folder "connection.html" {
+    ["connection.html"] as connectionhtml
+  }
+}
+
+cloud {
+  folder "Web Dependecies" {
+    ["jquery-3.2.1.min.js"] as jquery
+    ["vue"] as vue
+  }
+}
+
+[packagejson]       --> [mainjs]
+
+[mainjs]            --> [welcomehtml]
+[mainjs]            --> [connectionhtml]
+[mainjs]            --> [messengerhtml]
+
+[mainjs]            --> [electron]
+[messengerhtml]     --> [electron]
+
+[welcomehtml]       --> [vue]
+[welcomehtml]       --> [jquery]
+
+[messengerhtml]     --> [bitcoin]
+[messengerhtml]     --> [nschedule]
+[messengerhtml]     --> [vue]
+[messengerhtml]     --> [jquery]
+
+
+[connectionhtml]    --> [vue]
+[connectionhtml]    --> [jquery]
+
+[bitcoin]           <-> [bitcoin client] : "JSON-RPC via\nHTTP on port 8822"
+[bitcoin client]    <-> [RPC server] : Hush' RPC runs on port 8822 on localhost with user and pass, timeout 30000
+[bitcoin client]    <-> [RPC server] : getwalletinfo
+note right
+  Server: POST http://user:pass@127.0.0.1:8822
+  Accept: application/json
+  User-Agent: Bitcoin::RPC::Client/0.07
+  Content-Length: 54
+  Content-Type: application/json
+
+  {"params":[],"version":"1.1","method":"getwalletinfo"}
+
+  [[https://chainquery.com/bitcoin-api/getwalletinfo]]
+end note
+
+[bitcoin client] <-- [RPC server]: Response
+note left
+  {
+  "walletversion": 60000,
+  "balance": 655.30424050,
+  "unconfirmed_balance": 0.00000000,
+  "immature_balance": 0.00000000,
+  "txcount": 6,
+  "keypoololdest": 1507272325,
+  "keypoolsize": 101,
+  "paytxfee": 0.00000000
+  }
+end note
+
+
+note right of (mainjs)
+  Main entry point for app
+end note
+
+note right of (electron)
+  Electron is what Github Desktop is written in
+end note
+
+note left of (npm)
+  npm is the package manager for JavaScript
+end note
+
+@enduml

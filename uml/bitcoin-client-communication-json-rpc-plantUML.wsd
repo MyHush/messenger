@@ -1,0 +1,31 @@
+@startuml
+
+Client <-> Server: Hush' RPC runs on port 8822 on localhost with user and pass, timeout 30000
+
+Client -> Server: getwalletinfo
+note left
+  Server: POST http://user:pass@127.0.0.1:8822
+  Accept: application/json
+  User-Agent: Bitcoin::RPC::Client/0.07
+  Content-Length: 54
+  Content-Type: application/json
+
+  {"params":[],"version":"1.1","method":"getwalletinfo"}
+
+  [[https://chainquery.com/bitcoin-api/getwalletinfo]]
+end note
+
+Client <-- Server: Response
+note right
+  {
+  "walletversion": 60000,
+  "balance": 655.30424050,
+  "unconfirmed_balance": 0.00000000,
+  "immature_balance": 0.00000000,
+  "txcount": 6,
+  "keypoololdest": 1507272325,
+  "keypoolsize": 101,
+  "paytxfee": 0.00000000
+  }
+end note
+@enduml
