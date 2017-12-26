@@ -1,0 +1,82 @@
+@startuml
+
+skinparam component {
+  Style uml2
+  BackgroundColor #FEFECE
+}
+
+
+folder "Dependecies" {
+  ["bitcoin": "^3.0.1"]         as bitcoin
+  ["delay": "^2.0.0"]           as delay
+  ["material-icons": "^0.1.0"]  as material_icons
+  ["npm": "^4.6.1"]             as npm
+  ["nschedule": "^0.4.0"]       as nschedule
+}
+
+folder "Dev Dependencies" {
+  ["electron": "~1.6.2"]            as electron
+  ["electron-builder": "^17.10.0"]  as electron_builder
+}
+folder "package.json" {
+  ["package.json"] as packagejson
+}
+folder "main.js" {
+  ["main.js"] as mainjs
+}
+folder "welcome.html" {
+  ["welcome.html"] as welcomehtml
+}
+folder "messenger.html" {
+  ["messenger.html"] as messengerhtml
+}
+folder "connection.html" {
+  ["connection.html"] as connectionhtml
+}
+
+folder "Web Dependecies" {
+  ["jquery-3.2.1.min.js"] as jquery
+  ["vue"] as vue
+}
+
+
+[mainjs]            --> [electron]
+[messengerhtml]     --> [electron]
+
+
+[packagejson]       --> [mainjs]
+
+[welcomehtml]       --> [vue]
+[welcomehtml]       --> [jquery]
+
+[messengerhtml]     --> [bitcoin]
+[messengerhtml]     --> [nschedule]
+[messengerhtml]     --> [vue]
+[messengerhtml]     --> [jquery]
+
+
+[connectionhtml]    --> [vue]
+[connectionhtml]    --> [jquery]
+
+[bitcoin]           ..> [bitcoin client] : "JSON-RPC via\nHTTP on port 8822"
+[bitcoin client]    ..> [RPC server] : Bitcoin RPC\nRemote Procedure Call (JSON)
+
+note right of (mainjs)
+  Main entry point for app
+end note
+
+note right of (electron)
+  Electron is what Github Desktop is written in
+end note
+
+note left of (npm)
+  npm is the package manager for JavaScript
+end note
+
+@enduml
+
+cloud "Bitcoin RPC\nRemote Procedure Call (JSON)" {
+  [Service Locator] as ServiceLocator
+}
+
+["request": "^2.81.0"]        as request
