@@ -2,7 +2,7 @@
 
 Secure messaging with the zcash protocol
 
-**This repo is in active development.**
+**This repo is ABANDONED**
 
 ## Platforms
 
